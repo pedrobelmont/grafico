@@ -1,26 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <GraficoPareto :data="data" :mes="mes" />
+  </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import GraficoPareto from "@/components/grafico1.vue";
+import { ref } from "vue";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: { GraficoPareto },
+  setup() {
+    const mes = ref(["Jan", "Fev", "Mar", "Abr", "Mai"]);
+    const data = ref([600, 550, 750, 250, 700]);
+    console.log(data.value);
+    return {
+      data,
+      mes,
+    };
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
